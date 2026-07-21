@@ -342,39 +342,56 @@
 
     /* ─── 院内情報フッター ─── */
     .clinic-footer {
-      background: #1a3a52;
-      color: #fff;
-      padding: 40px 24px 32px;
+      background: linear-gradient(180deg, #fdf8f2, #faf4ee);
+      padding: 48px 24px 36px;
       text-align: center;
+      position: relative;
+    }
+
+    .clinic-footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #dfc089, #b8935a, #dfc089, transparent);
     }
 
     .clinic-footer-label {
-      font-size: 10px;
-      letter-spacing: 0.35em;
+      font-size: 9px;
+      letter-spacing: 0.4em;
       color: #b8935a;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-family: 'Shippori Mincho B1', '游明朝', serif;
     }
 
     .clinic-footer-name {
-      font-size: 20px;
-      font-weight: bold;
-      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
-      letter-spacing: 0.1em;
-      margin-bottom: 28px;
-      color: #fff;
+      font-size: 22px;
+      font-weight: 500;
+      font-family: 'Shippori Mincho B1', '游明朝', 'YuMincho', serif;
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
+      color: #1a3a52;
+    }
+
+    .clinic-footer-tagline {
+      font-size: 11px;
+      color: #b8935a;
+      letter-spacing: 0.15em;
+      margin-bottom: 32px;
+      font-family: 'Shippori Mincho B1', '游明朝', serif;
     }
 
     .clinic-info-grid {
       text-align: left;
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(184,147,90,0.2);
       margin-bottom: 24px;
     }
 
     .clinic-info-row {
       display: flex;
       gap: 16px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(184,147,90,0.2);
       font-size: 13px;
       line-height: 1.7;
     }
@@ -382,18 +399,19 @@
     .info-label {
       min-width: 64px;
       color: #b8935a;
-      font-size: 11px;
-      letter-spacing: 0.05em;
+      font-size: 10px;
+      letter-spacing: 0.12em;
       padding-top: 2px;
+      font-family: 'Shippori Mincho B1', '游明朝', serif;
     }
 
     .info-val {
-      color: rgba(255,255,255,0.85);
+      color: #3a3a3a;
     }
 
     .clinic-footer-note {
       font-size: 10px;
-      color: rgba(255,255,255,0.4);
+      color: #aaa;
       line-height: 1.9;
       margin-bottom: 20px;
       text-align: left;
@@ -401,7 +419,7 @@
 
     .clinic-copyright {
       font-size: 10px;
-      color: rgba(255,255,255,0.3);
+      color: #bbb;
       letter-spacing: 0.05em;
     }
 
@@ -619,6 +637,7 @@
   <div class="clinic-footer">
     <p class="clinic-footer-label">CLINIC INFO</p>
     <h3 class="clinic-footer-name">○○クリニック</h3>
+    <p class="clinic-footer-tagline">自然で美しい二重を、あなたに。</p>
     <div class="clinic-info-grid">
       <div class="clinic-info-row">
         <span class="info-label">住所</span>
