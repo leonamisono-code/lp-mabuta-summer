@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>この夏、理想の二重で思いきり楽しもう。｜埋没法（3点留め）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      max-width: 640px;
+      margin: 0 auto;
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    }
+
+    /* ─── セクション画像 ─── */
+    .sec img {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: bottom;
+    }
+
+    /* ─── フェードイン ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── インラインCTA ─── */
+    .inline-cta {
+      padding: 28px 20px;
+      background: #f0f7fb;
+      text-align: center;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 16px 48px 18px 16px;
+      background: linear-gradient(90deg, #b8935a, #dfc089, #b8935a);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', 'ヒラギノ明朝 ProN', serif;
+      letter-spacing: 0.08em;
+      box-shadow: 0 3px 16px rgba(180,140,80,0.4), inset 0 0 0 1px rgba(255,255,255,0.45);
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .cta-btn .arrow {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      font-family: sans-serif;
+    }
+
+    .cta-sub {
+      font-size: 11px;
+      font-weight: normal;
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      display: block;
+      margin-bottom: 6px;
+      opacity: 0.9;
+      letter-spacing: 0.15em;
+    }
+
+    .cta-note-below {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 10px;
+    }
+
+    /* ─── Q&A ─── */
+    .qa-section {
+      background: #f5f9fc;
+      padding: 48px 20px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qa-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #b3d8ec, transparent);
+    }
+
+    .qa-label {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: #7aafc8;
+      text-align: center;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .qa-title {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      color: #1a3a52;
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+
+    .qa-title span {
+      color: #4a9cc7;
+    }
+
+    .qa-item {
+      margin-bottom: 4px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+
+    .qa-q {
+      background: #fff;
+      padding: 16px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .qa-q-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      background: #6bafd6;
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .qa-q-text {
+      font-size: 14px;
+      color: #1a3a52;
+      line-height: 1.6;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    .qa-chevron {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 4px;
+      transition: transform 0.3s;
+    }
+
+    .qa-item.open .qa-chevron {
+      transform: rotate(180deg);
+    }
+
+    .qa-a {
+      background: #eef6fb;
+      padding: 0 16px 0 52px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .qa-item.open .qa-a {
+      max-height: 300px;
+      padding: 14px 16px 16px 52px;
+    }
+
+    .qa-a-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #f0c98c;
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .qa-a p {
+      font-size: 13px;
+      color: #4a5a6a;
+      line-height: 1.9;
+      display: inline;
+    }
+
+    /* ─── 固定CTA ─── */
+    .fixed-cta {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 640px;
+      padding: 10px 16px calc(16px + env(safe-area-inset-bottom));
+      background: linear-gradient(to top, rgba(255,255,255,1) 70%, rgba(255,255,255,0));
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .fixed-cta.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .spacer { height: 90px; }
+
+    /* ─── 時限バナー ─── */
+    .countdown-banner {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: linear-gradient(135deg, #fdf8f0, #fff9f0, #fdf8f0);
+      padding: 10px 16px 10px;
+      border-bottom: 1px solid rgba(184,147,90,0.25);
+      box-shadow: 0 2px 12px rgba(180,140,80,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .countdown-clinic {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex-shrink: 0;
+    }
+
+    .countdown-clinic-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: #b8935a;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
+    }
+
+    .countdown-clinic-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1a3a52;
+      letter-spacing: 0.18em;
+      font-family: 'Shippori Mincho B1', '游明朝', 'YuMincho', serif;
+      white-space: nowrap;
+    }
+
+    .countdown-clinic-sub {
+      font-size: 9px;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+    .countdown-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .countdown-label {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: #b8935a;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
+      white-space: nowrap;
+    }
+
+    .countdown-timer {
+      display: flex;
+      align-items: flex-start;
+      gap: 3px;
+    }
+
+    .countdown-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+
+    .countdown-num {
+      font-size: 22px;
+      font-weight: bold;
+      font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: linear-gradient(180deg, #b8935a, #dfc089);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .countdown-unit {
+      font-size: 8px;
+      color: #b8935a;
+      letter-spacing: 0.05em;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
+    }
+
+    .countdown-sep {
+      font-size: 18px;
+      font-weight: bold;
+      color: #dfc089;
+      opacity: 0.5;
+      line-height: 1.1;
+      margin-top: 1px;
+    }
+
+    .countdown-ended {
+      font-size: 13px;
+      color: #b8935a;
+      letter-spacing: 0.15em;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
+    }
+
+    /* ─── 院内情報フッター ─── */
+    .clinic-footer {
+      background: #1a3a52;
+      color: #fff;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+
+    .clinic-footer-label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: #b8935a;
+      margin-bottom: 8px;
+    }
+
+    .clinic-footer-name {
+      font-size: 20px;
+      font-weight: bold;
+      font-family: '游明朝', 'YuMincho', 'Hiragino Mincho ProN', serif;
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+      color: #fff;
+    }
+
+    .clinic-info-grid {
+      text-align: left;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 24px;
+    }
+
+    .clinic-info-row {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .info-label {
+      min-width: 64px;
+      color: #b8935a;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      padding-top: 2px;
+    }
+
+    .info-val {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .clinic-footer-note {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .clinic-copyright {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── CTA シマー ─── */
+    .cta-shimmer {
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .cta-shimmer img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .cta-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.55) 50%,
+        rgba(255, 255, 255, 0) 70%,
+        transparent 100%
+      );
+      animation: shimmer 2.4s ease-in-out infinite;
+    }
+
+    /* ─── 全体シマーオーバーレイ ─── */
+    #page-shimmer {
+      position: fixed;
+      top: 0;
+      left: -60%;
+      width: 40%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.18) 50%,
+        rgba(255, 255, 255, 0) 80%,
+        transparent 100%
+      );
+      animation: page-shimmer 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    @keyframes shimmer {
+      0%   { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    @keyframes page-shimmer {
+      0%   { left: -60%; }
+      100% { left: 120%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 時限バナー -->
+  <div class="countdown-banner">
+    <div class="countdown-clinic">
+      <span class="countdown-clinic-label">CLINIC</span>
+      <span class="countdown-clinic-name">○○クリニック</span>
+      <span class="countdown-clinic-sub">埋没法（3点留め）夏キャンペーン</span>
+    </div>
+    <div class="countdown-right">
+      <p class="countdown-label">キャンペーン終了まで</p>
+      <div class="countdown-timer" id="countdown">
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-d">--</span>
+          <span class="countdown-unit">日</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-h">--</span>
+          <span class="countdown-unit">時間</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-m">--</span>
+          <span class="countdown-unit">分</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-s">--</span>
+          <span class="countdown-unit">秒</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01: FV -->
+  <div class="sec">
+    <img src="assets/section-06-price.png" alt="この夏、理想の二重で思いきり楽しもう。">
+  </div>
+
+  <!-- CTA① FV直下 -->
+  <div class="inline-cta fade-in">
+    <a href="#" class="cta-shimmer">
+      <img src="assets/cta-btn.png" alt="無料カウンセリングを予約する">
+    </a>
+    <p class="cta-note-below">※ご予約は24時間受付中</p>
+  </div>
+
+  <!-- 02: 悩み -->
+  <div class="sec fade-in">
+    <img src="assets/section-05-reason.png" alt="こんなお悩みありませんか？">
+  </div>
+
+  <!-- 03: 埋没法とは -->
+  <div class="sec fade-in">
+    <img src="assets/section-04-case.png" alt="自然な二重を叶える、埋没法とは？">
+  </div>
+
+  <!-- 04: 症例 Before/After -->
+  <div class="sec fade-in">
+    <img src="assets/section-05b-reason.png" alt="自然な二重で、こんなに印象が変わります。">
+  </div>
+
+  <!-- 05: 選ばれる理由 -->
+  <div class="sec fade-in">
+    <img src="assets/section-03-about.png" alt="○○クリニックが選ばれる理由。">
+  </div>
+
+  <!-- 06: 特別価格（詳細版） -->
+  <div class="sec fade-in">
+    <img src="assets/section-01-fv.png" alt="この夏だけの特別価格">
+  </div>
+
+  <!-- CTA② 価格後 → Q&A前 -->
+  <div class="inline-cta fade-in">
+    <a href="#" class="cta-shimmer">
+      <img src="assets/cta-btn.png" alt="無料カウンセリングを予約する">
+    </a>
+    <p class="cta-note-below">※ご予約は24時間受付中</p>
+  </div>
+
+  <!-- Q&A -->
+  <div class="qa-section fade-in">
+    <p class="qa-label">Q &amp; A</p>
+    <h2 class="qa-title">よくある<span>ご質問</span></h2>
+
+    <div class="qa-item">
+      <div class="qa-q" onclick="toggle(this)">
+        <span class="qa-q-icon">Q</span>
+        <span class="qa-q-text">ダウンタイムはどのくらいですか？</span>
+        <span class="qa-chevron">▼</span>
+      </div>
+      <div class="qa-a">
+        <span class="qa-a-icon">A</span>
+        <p>個人差はありますが、腫れや内出血は数日〜1週間程度で落ち着くことがほとんどです。翌日からメイク可能です（腫れの状態によりご案内が異なります）。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q" onclick="toggle(this)">
+        <span class="qa-q-icon">Q</span>
+        <span class="qa-q-text">施術時間はどのくらいかかりますか？</span>
+        <span class="qa-chevron">▼</span>
+      </div>
+      <div class="qa-a">
+        <span class="qa-a-icon">A</span>
+        <p>埋没法（3点留め）の施術時間は約15〜20分程度です。お仕事の休憩時間でも対応可能なケースもございます。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q" onclick="toggle(this)">
+        <span class="qa-q-icon">Q</span>
+        <span class="qa-q-text">バレにくいですか？</span>
+        <span class="qa-chevron">▼</span>
+      </div>
+      <div class="qa-a">
+        <span class="qa-a-icon">A</span>
+        <p>埋没法は切開しないため傷跡が残りません。一人ひとりの目元に合わせてデザインするため、自然で「バレにくい」仕上がりを目指します。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q" onclick="toggle(this)">
+        <span class="qa-q-icon">Q</span>
+        <span class="qa-q-text">カウンセリングだけでも来院できますか？</span>
+        <span class="qa-chevron">▼</span>
+      </div>
+      <div class="qa-a">
+        <span class="qa-a-icon">A</span>
+        <p>もちろんです。カウンセリング・デザイン相談は無料で承っております。施術を決めていない段階でもお気軽にお越しください。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q" onclick="toggle(this)">
+        <span class="qa-q-icon">Q</span>
+        <span class="qa-q-text">料金に含まれるものを教えてください。</span>
+        <span class="qa-chevron">▼</span>
+      </div>
+      <div class="qa-a">
+        <span class="qa-a-icon">A</span>
+        <p>カウンセリング・デザイン相談・アフターケアがすべて料金に含まれています。追加費用は一切かかりません。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 院内情報フッター -->
+  <div class="clinic-footer">
+    <p class="clinic-footer-label">CLINIC INFO</p>
+    <h3 class="clinic-footer-name">○○クリニック</h3>
+    <div class="clinic-info-grid">
+      <div class="clinic-info-row">
+        <span class="info-label">住所</span>
+        <span class="info-val">〒000-0000<br>○○県○○市○○町0-0-0 ○○ビル0F</span>
+      </div>
+      <div class="clinic-info-row">
+        <span class="info-label">TEL</span>
+        <span class="info-val">000-000-0000</span>
+      </div>
+      <div class="clinic-info-row">
+        <span class="info-label">診療時間</span>
+        <span class="info-val">10:00 〜 19:00</span>
+      </div>
+      <div class="clinic-info-row">
+        <span class="info-label">休診日</span>
+        <span class="info-val">不定休</span>
+      </div>
+      <div class="clinic-info-row">
+        <span class="info-label">アクセス</span>
+        <span class="info-val">○○線「○○駅」徒歩0分</span>
+      </div>
+    </div>
+    <p class="clinic-footer-note">※施術の効果・ダウンタイムには個人差があります。<br>※掲載の症例写真は患者様の同意を得て掲載しています。</p>
+    <p class="clinic-copyright">&copy; ○○クリニック All Rights Reserved.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- 固定CTA -->
+  <div class="fixed-cta" id="fixed-cta">
+    <a href="#" class="cta-shimmer">
+      <img src="assets/cta-btn.png" alt="無料カウンセリングを予約する">
+    </a>
+  </div>
+
+  <div id="page-shimmer"></div>
+
+  <script>
+    // ─── Q&Aトグル ───
+    function toggle(el) {
+      el.closest('.qa-item').classList.toggle('open');
+    }
+
+    // ─── カウントダウン ───
+    const deadline = new Date('2026-08-31T23:59:59');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = deadline - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<span class="countdown-ended">キャンペーン終了</span>';
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-d').textContent = String(d).padStart(2, '0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ─── 固定CTAをスクロール後に表示 ───
+    const fixedCta = document.getElementById('fixed-cta');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        fixedCta.classList.add('show');
+      } else {
+        fixedCta.classList.remove('show');
+      }
+    }, { passive: true });
+
+    // ─── スクロールフェードイン ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
